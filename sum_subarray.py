@@ -15,6 +15,4 @@ class Solution:
         return max(self.end_with(index-1,array)+array[index], array[index])
 
 
-
-
 print(Solution().FindGreatestSumOfSubArray([6,-3,-2,7,-15,1,2,2]))
