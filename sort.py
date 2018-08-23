@@ -84,4 +84,26 @@ def heap(li):
 
     return li
 
-print(heap(li))
+# print(heap(li))
+
+
+def merge(li):
+    if len(li)==1:
+        return li
+    half = len(li)//2
+    left, right = merge(li[:half]), merge(li[half:])
+    new_li = []
+    while len(new_li) < len(li):
+        if not left:
+            new_li += right
+            break
+        if not right:
+            new_li += left
+            break
+        if left[0] <= right[0]:
+            new_li.append(left.pop(0))
+        else:
+            new_li.append(right.pop(0))
+    return new_li
+
+print(merge(li))
