@@ -64,5 +64,5 @@ class Solution:
             index += 1
         return count + left + right
 
-    
+
 print(Solution().InversePairs([1,2,3,4,5,6,7,0]))

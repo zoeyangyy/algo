@@ -106,4 +106,43 @@ def merge(li):
             new_li.append(right.pop(0))
     return new_li
 
-print(merge(li))
+# print(merge(li))
+
+
+def quick_2(list, start, end):
+    if start == end:
+        return [list[start]]
+    if start>end:
+        return []
+    one = list[start]
+    left, right = start, end
+    while left < right:
+        for m in range(right,left,-1):
+            if list[m]<one:
+                list[left] = list[m]
+                break
+            right -= 1
+        for n in range(left, right):
+            if list[n]>one:
+                list[right] = list[n]
+                break
+            left += 1
+    list[left] = one
+    return quick_2(list, start, left-1) + [one] + quick_2(list, left+1, end)
+
+def quick(li, start, end):
+    if start < end:
+        base = li[start]
+        i, j = start, end
+        while i < j:
+            while j>i and li[j]>base:
+                j -= 1
+            li[i] = li[j]
+            while i<j and li[i]<base:
+                i += 1
+            li[j] = li[i]
+        li[i] = base
+        quick(li, start, i-1)
+        quick(li, j+1, end)
+    return li
+
